@@ -26,19 +26,19 @@
                     <div class="row">
                         <div class="col-12 mx-auto">
                             <div class="d-flex justify-content-between">
-                                <h3>User Detail ${userid}</h3>
+                                <h3>User Detail ${newUser.id}</h3>
                             </div>
 
                             <hr />
-                            <div class="card" style="width: 60%;">
+                            <div class="card" style="width: 60%;" modelAttribute="newUser">
                                 <div class="card-header">
                                     User information
                                 </div>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Id: 1</li>
-                                    <li class="list-group-item">Email:-</li>
-                                    <li class="list-group-item">FullName:-</li>
-                                    <li class="list-group-item">Address:-</li>
+                                    <li class="list-group-item">Id: ${newUser.id}</li>
+                                    <li class="list-group-item">Email: ${newUser.email}</li>
+                                    <li class="list-group-item">FullName:${newUser.fullName}</li>
+                                    <li class="list-group-item">Address: ${newUser.address}</li>
                                 </ul>
                             </div>
 

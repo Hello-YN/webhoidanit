@@ -13,6 +13,7 @@ import vn.hoidanit.laptopshop.service.UserService;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -43,8 +44,9 @@ public class UserController {
     // chi tiết người dùng
     @RequestMapping("/admin/user/{userid}")
     public String getUserDetailPage(Model model, @PathVariable long userid) {
-        System.out.println("check path id = " + userid);
-        model.addAttribute("id", userid);
+
+        User currentUser = this.userService.getUserById(userid);
+        model.addAttribute("newUser", currentUser);
         return "admin/user/userDetail";
     }
 
@@ -61,4 +63,12 @@ public class UserController {
         this.userService.handleSaveUser(hoidanit);
         return "redirect:/admin/user";
     }
+
+    @RequestMapping("/admin/user/update/{id}")
+    public String getUpdateUserPage(Model model, @PathVariable long id) {
+        User currentUser = this.userService.getUserById(id);
+        model.addAttribute("newUser", currentUser);
+        return "admin/user/update";
+    }
+
 }
